@@ -3,12 +3,6 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-class Category(models.Model):
-    type = models.CharField(max_length=50, unique=True)
-
-    def __str__(self):
-        return self.type
-
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -18,7 +12,7 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_profile_qdjgyp'
     )
-    main_interest = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
+    main_interest = models.CharField(max_length=200, null=True, blank=True) # Placeholder 
 
     class Meta:
         ordering = ['-created_at']
