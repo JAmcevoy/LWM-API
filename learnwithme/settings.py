@@ -30,13 +30,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-s80phl%$r=vxfm@ye8k1+5=y(l!d(c_yf0v^2z@#o*m92^hfjs'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jamcevoy-learnwithmeapi-h5tvn6ek4re.ws.codeinstitute-ide.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-jamcevoy-learnwithmeapi-h5tvn6ek4re.ws.codeinstitute-ide.net'
+]
 
 # Application definition
 
