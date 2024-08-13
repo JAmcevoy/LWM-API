@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.db.models.signals import post_save
+from circles.models import Category
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
@@ -12,7 +13,12 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_profile_qdjgyp'
     )
-    main_interest = models.CharField(max_length=200, null=True, blank=True) # Placeholder 
+    main_interest = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    ) 
 
     class Meta:
         ordering = ['-created_at']

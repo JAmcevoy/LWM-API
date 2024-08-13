@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from circles.models import Category
 from django.core.exceptions import ValidationError
 
 def validate_file_size(file):
@@ -13,8 +14,18 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     steps = models.TextField(blank=True)
-    image_or_video = models.FileField(upload_to='posts/media/', validators=[validate_file_size], blank=True, null=True)
-    category = models.CharField(max_length=200, null=True, blank=True) # Placeholder Until I created Categories
+    image_or_video = models.FileField(
+        upload_to='posts/media/', 
+        validators=[validate_file_size], 
+        blank=True, 
+        null=True
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
     
 
     def __str__(self):
