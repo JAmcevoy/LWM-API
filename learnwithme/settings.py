@@ -33,9 +33,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s80phl%$r=vxfm@ye8k1+5=y(l!d(c_yf0v^2z@#o*m92^hfjs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['8000-jamcevoy-learnwithmeapi-h5tvn6ek4re.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
+    'profiles',
 ]
 
 MIDDLEWARE = [
