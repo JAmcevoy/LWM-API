@@ -1,16 +1,19 @@
+from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import Http404
 from .models import Profile
 from .serializers import ProfileSerializer
 from learnwithme.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
+
     def get(self, request):
         profiles = Profile.objects.all()
-        serializer = ProfileSerializer(profiles, many=True, context={'request': request})
+        serializer = ProfileSerializer(
+            profiles, many=True, context={'request': request}
+        )
         return Response(serializer.data)
 
 
@@ -28,12 +31,16 @@ class ProfileDetail(APIView):
 
     def get(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile, context={'request': request})
+        serializer = ProfileSerializer(
+            profile, context={'request': request}
+        )
         return Response(serializer.data)
 
     def put(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile, data=request.data, context={'request': request})
+        serializer = ProfileSerializer(
+            profile, data=request.data, context={'request': request}
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -41,8 +48,5 @@ class ProfileDetail(APIView):
 
     def delete(self, request, pk):
         profile = self.get_object(pk)
-        if request.user == profile.owner:
-            profile.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
-        else:
-            return Response(status=status.HTTP_403_FORBIDDEN)
+        profile.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

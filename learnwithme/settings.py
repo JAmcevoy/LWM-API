@@ -35,7 +35,7 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-jamcevoy-learnwithmeapi-h5tvn6ek4re.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-jamcevoy-lwmapi-8924ylx7v33.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-jamcevoy-learnwithmeapi-h5tvn6ek4re.ws.codeinstitute-ide.net'
