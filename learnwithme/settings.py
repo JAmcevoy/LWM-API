@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-jamcevoy-lwmapi-8924ylx7v33.ws.codeinstitute-ide.net']
 
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'posts',
     'circles',
+    'chats',
 ]
 
 MIDDLEWARE = [
