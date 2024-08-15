@@ -11,6 +11,7 @@ class InterestCircle(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    members = models.ManyToManyField(User, related_name='circles')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(User, related_name='created_circles', on_delete=models.CASCADE)

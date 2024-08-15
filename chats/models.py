@@ -9,4 +9,4 @@ class Chat(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.sender} - {self.timestamp}'
+        return f'{self.owner} - {self.timestamp}'
