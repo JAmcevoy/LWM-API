@@ -5,6 +5,7 @@ from likes.models import Like
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    category_name = serializers.ReadOnlyField(source='category.type')
     is_owner = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
