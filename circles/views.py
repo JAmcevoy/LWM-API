@@ -7,6 +7,8 @@ from .serializers import CategorySerializer, InterestCircleSerializer
 from learnwithme.permissions import IsOwnerOrReadOnly
 
 class CategoryList(APIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
     def get(self, request):
         category = Category.objects.all()
@@ -14,6 +16,10 @@ class CategoryList(APIView):
             category, many=True, context={'request': request}
         )
         return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        # Handle POST request for creating a category
+        return super().create(request, *args, **kwargs)
 
 
 class InterestCircleList(APIView):
