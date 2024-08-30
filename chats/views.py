@@ -8,7 +8,6 @@ class ChatList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        # Filter chats by the 'circle' field based on the URL parameter
         circle_id = self.kwargs.get('circle_id')
         if circle_id:
             return Chat.objects.filter(circle=circle_id)

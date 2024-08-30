@@ -6,6 +6,7 @@ class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     category_name = serializers.ReadOnlyField(source='category.type')
+    owner_profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     is_owner = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
@@ -38,5 +39,6 @@ class PostSerializer(serializers.ModelSerializer):
             'like_id', 
             'likes_count',
             'profile_image',
-            'category_name'
+            'category_name',
+            'owner_profile_id'
         ]
