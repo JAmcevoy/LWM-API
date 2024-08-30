@@ -17,10 +17,6 @@ class CategoryList(APIView):
         )
         return Response(serializer.data)
 
-    def create(self, request, *args, **kwargs):
-        # Handle POST request for creating a category
-        return super().create(request, *args, **kwargs)
-
 
 class InterestCircleList(APIView):
 
