@@ -1,7 +1,7 @@
 from django.urls import path
-from chats import views
+from .views import ChatList, ChatDetail
 
 urlpatterns = [
-    path('chats/', views.ChatList.as_view()),
-    path('chats/<int:pk>/', views.ChatDetail.as_view()),
+    path('chats/circle/<int:circle_id>/', ChatList.as_view(), name='chat-list-create'),
+    path('chats/<int:pk>/', ChatDetail.as_view(), name='chat-detail'),
 ]
