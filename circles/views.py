@@ -27,6 +27,9 @@ class InterestCircleList(APIView):
         )
         return Response(serializer.data)
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class InterestCircleDetail(APIView):
     serializer_class = InterestCircleSerializer
