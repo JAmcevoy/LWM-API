@@ -19,7 +19,6 @@ class CategoryList(APIView):
 
 
 class InterestCircleList(APIView):
-
     def get(self, request):
         interest = InterestCircle.objects.all()
         serializer = InterestCircleSerializer(
@@ -27,8 +26,12 @@ class InterestCircleList(APIView):
         )
         return Response(serializer.data)
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    def post(self, request):
+        serializer = InterestCircleSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class InterestCircleDetail(APIView):
