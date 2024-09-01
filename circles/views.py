@@ -18,7 +18,7 @@ class CategoryList(APIView):
         )
         return Response(serializer.data)
 
-class InterestCircleList(generics.ListCreateAPIView):
+class InterestCircleList(APIView):
     serializer_class = InterestCircleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -28,7 +28,7 @@ class InterestCircleList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-class InterestCircleDetail(generics.RetrieveUpdateDestroyAPIView):
+class InterestCircleDetail(APIView):
     queryset = InterestCircle.objects.all()
     serializer_class = InterestCircleSerializer
     permission_classes = [IsOwnerOrReadOnly]
