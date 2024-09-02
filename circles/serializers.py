@@ -33,5 +33,6 @@ class InterestCircleSerializer(serializers.ModelSerializer):
             'updated_at',
             'owner', 
             'is_owner',
-            'owner_profile_id'
+            'owner_profile_id',
+            'category_name'
         ]
