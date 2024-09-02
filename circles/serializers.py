@@ -13,6 +13,7 @@ class InterestCircleSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    owner_profile_id = serializers.ReadOnlyField(source='owner.profile.id')
 
     def get_is_owner(self, obj):
         request = self.context.get('request')
@@ -30,5 +31,6 @@ class InterestCircleSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'owner', 
-            'is_owner'
+            'is_owner',
+            'owner_profile_id'
         ]
