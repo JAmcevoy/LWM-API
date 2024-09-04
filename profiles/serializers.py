@@ -34,7 +34,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'updated_at', 
             'username', 
             'about_me',
-            'main_interest' 
+            'main_interest',
             'image', 
             'is_owner',
             'following_id',
