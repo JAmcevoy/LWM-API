@@ -3,7 +3,7 @@ from .models import Chat
 
 class ChatSerializer(serializers.ModelSerializer):
     owner_username = serializers.CharField(source='owner.username', read_only=True)
-    chat_circle_name = serializers.ReadOnlyField(source='owner.profile.id')
+    chat_circle_name = serializers.ReadOnlyField(source='circle.name')
 
     
     class Meta:
