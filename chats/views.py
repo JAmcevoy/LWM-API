@@ -10,7 +10,7 @@ class ChatList(generics.ListCreateAPIView):
     def get_queryset(self):
         circle_id = self.kwargs.get('circle_id')
         if circle_id:
-            return Chat.objects.filter(circle=circle_id).order_by('-created_at')
+            return Chat.objects.filter(circle=circle_id)
         return Chat.objects.all().order_by('-created_at')
 
     def perform_create(self, serializer):
