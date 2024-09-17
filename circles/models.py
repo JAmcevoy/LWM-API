@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.type
 
 class InterestCircle(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     members = models.ManyToManyField(User, related_name='circles')
