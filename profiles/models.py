@@ -10,7 +10,7 @@ class Profile(models.Model):
     username = models.CharField(max_length=255, blank=True)
     about_me = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='drilldown_tq1xjd'
+        upload_to='images/', default='../default_profile_qdjgyp'
     )
     main_interest = models.ForeignKey(
         Category,
