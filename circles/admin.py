@@ -7,7 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(InterestCircle)
 class InterestCircleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'owner', 'created_at', 'updated_at')
+    list_display = ('id', 'name', 'category', 'owner', 'created_at', 'updated_at')
     search_fields = ('name', 'description')
     list_filter = ('category', 'created_at')
     ordering = ('-created_at',) 
