@@ -9,6 +9,8 @@ class ChatSerializer(serializers.ModelSerializer):
     owner_username = serializers.CharField(source='owner.username', read_only=True)
     # Read-only field to display the chat circle's name
     chat_circle_name = serializers.ReadOnlyField(source='circle.name')
+    # Ensure the timestamp shows time.
+    timestamp = serializers.DateTimeField(format="%d-%b-%Y %H:%M:%S", read_only=True)
 
     class Meta:
         model = Chat
